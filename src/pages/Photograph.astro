@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import PhotoWall from '../components/PhotoWall.astro';
+const title = ['Past day', 'China', 'future'];
+let pictureTitle = title[0];
+---
+
+<Layout title="lockon">
+	<main class="px-[103px]">
+		<div class="flex justify-between">
+			<div class="min-w-[161px]">
+				{
+					title.map((item, index) => (
+						<h3 class={`cursor-pointer ${pictureTitle === item ? 'text-gold-500' : 'text-black'}`} data-index={index}>
+							{item}
+						</h3>
+					))
+				}
+			</div>
+			<div class="flex flex-col gap-[40px] flex-wrap">
+				<PhotoWall pictureTitle={pictureTitle} />
+			</div>
+			<div>
+				<h2 class="hollow-text">PORTFOLIO</h2>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	document.querySelectorAll('h3[data-index]').forEach((element) => {
+		element.addEventListener('click', (event) => {
+			const target = event.target as HTMLElement;
+			const index = target.getAttribute('data-index');
+			if (index !== null) {
+				const title = ['Past day', 'China', 'future'];
+				document.getElementById('pictureTitle').innerText = title[parseInt(index)];
+				document.querySelectorAll('h3').forEach((el) => {
+					el.classList.toggle('text-gold-500', el === target);
+					el.classList.toggle('text-black', el !== target);
+				});
+			}
+		});
+	});
+</script>
+
+<style>
+	.hollow-text {
+		font-size: 5rem;
+		font-weight: bold;
+		-webkit-text-fill-color: transparent;
+		-webkit-text-stroke: 1px #d2b48c;
+		writing-mode: vertical-rl; /* 竖排文本 */
+		text-orientation: mixed; /* 文字方向 */
+		letter-spacing: 1rem; /* 字母间距 */
+		text-align: center; /* 文本居中对齐 */
+	}
+</style>
