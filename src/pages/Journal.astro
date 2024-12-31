@@ -1,11 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const allPosts = await Astro.glob('./blog/*.astro');
 import BlogCard from '../components/BlogCard.astro';
+const allPosts = await Astro.glob('./blog/*.astro');
 const title = ['Past day', 'China', 'future'];
 let pictureTitle = title[0];
 ---
-
 <Layout title="lockon">
 	<main class="px-[103px] h-[calc(100vh-130px-148px)]">
 		<div class="flex justify-between h-full">

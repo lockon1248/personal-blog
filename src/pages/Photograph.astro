@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 import PhotoWall from '../components/PhotoWall.astro';
 const title = ['Past day', 'China', 'future'];
 let pictureTitle = title[0];
@@ -27,7 +26,6 @@ let pictureTitle = title[0];
 		</div>
 	</main>
 </Layout>
-
 <script>
 	document.querySelectorAll('h3[data-index]').forEach((element) => {
 		element.addEventListener('click', (event) => {
@@ -44,7 +42,6 @@ let pictureTitle = title[0];
 		});
 	});
 </script>
-
 <style>
 	.hollow-text {
 		font-size: 5rem;

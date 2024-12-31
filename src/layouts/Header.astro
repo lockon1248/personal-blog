@@ -2,7 +2,6 @@
 import { Icon } from 'astro-icon/components';
 const isHomePage = Astro.url.pathname === '/';
 ---
-
 <header class={`w-full z-20 ${isHomePage ? 'absolute top-50 left-50' : ''}`}>
 	<div class="bg-transparent flex h-[130px] items-center">
 		<div class="flex-1 flex justify-center items-center">

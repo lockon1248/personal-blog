@@ -4,7 +4,6 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31';
 ---
-
 <Layout title="lockon">
 	<main class="flex flex-col">
 		<div class="relative">
@@ -95,7 +94,6 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspo
 	};
 	const swiper = new Swiper('.swiper', swiperConfig);
 </script>
-
 <style>
 	.swiper {
 		--swiper-pagination-color: #d9bb73 !important;
@@ -111,7 +109,7 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspo
 		filter: grayscale(100%);
 		transition: filter 2s ease;
 	}
-	.swiper-slide Image:hover {
+	.swiper-slide Img:hover {
 		filter: grayscale(0%);
 	}
 	.swiper-button-next:after {
