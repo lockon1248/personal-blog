@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31';
 ---
+
 <Layout title="lockon">
 	<main class="flex flex-col">
 		<div class="relative">
@@ -38,8 +39,8 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspo
 		</div>
 		<div class="flex items-center justify-center p-4 gap-[135px] flex-wrap">
 			<div class="flex flex-col">
-				<h2 class="font-normal text-[80px]">Lockon</h2>
-				<div class="flex">
+				<h2 class="font-normal text-[clamp(20px,5vw,80px)]">Lockon</h2>
+				<div class="flex flex-col sm:flex-row">
 					<div class="flex flex-col">
 						<span>LAI</span>
 						<span>SHIH</span>

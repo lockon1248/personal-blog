@@ -5,6 +5,7 @@ const allPosts = await Astro.glob('./blog/*.astro');
 const title = ['Past day', 'China', 'future'];
 let pictureTitle = title[0];
 ---
+
 <Layout title="lockon">
 	<main class="px-[103px] h-[calc(100vh-130px-148px)]">
 		<div class="flex justify-between h-full">
@@ -25,7 +26,7 @@ let pictureTitle = title[0];
 				<BlogCard pictureTitle={pictureTitle} />
 			</div>
 			<div>
-				<h2 class="hollow-text">JOURNAL</h2>
+				<h2 class="hollow-text hidden sm:flex">JOURNAL</h2>
 			</div>
 		</div>
 	</main>
