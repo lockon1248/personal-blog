@@ -7,9 +7,9 @@ let pictureTitle = title[0];
 ---
 
 <Layout title="lockon">
-	<main class="px-[103px] h-[calc(100vh-130px-148px)]">
-		<div class="flex justify-between h-full">
-			<div class="min-w-[161px]">
+	<main class="p-8 sm:px-[103px] sm:py-0 h-[calc(100vh-130px-148px-64px)] sm:h-[calc(100vh-130px-148px)]">
+		<div class="flex justify-between h-full gap-8">
+			<div class="md:min-w-[161px]">
 				{
 					title.map((item, index) => (
 						// 將 key 放到最外層，而不是 h3 的屬性
@@ -26,7 +26,7 @@ let pictureTitle = title[0];
 				<BlogCard pictureTitle={pictureTitle} />
 			</div>
 			<div>
-				<h2 class="hollow-text hidden sm:flex">JOURNAL</h2>
+				<h2 class="hollow-text hidden md:flex">JOURNAL</h2>
 			</div>
 		</div>
 	</main>

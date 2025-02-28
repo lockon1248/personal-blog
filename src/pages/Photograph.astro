@@ -6,8 +6,8 @@ let pictureTitle = title[0];
 ---
 
 <Layout title="lockon">
-	<main class="px-[103px]">
-		<div class="flex justify-between">
+	<main class="sm:px-[103px]">
+		<div class="flex justify-between p-[20px] sm:p-0">
 			<div class="min-w-[161px]">
 				{
 					title.map((item, index) => (
@@ -21,7 +21,7 @@ let pictureTitle = title[0];
 				<PhotoWall pictureTitle={pictureTitle} />
 			</div>
 			<div>
-				<h2 class="hollow-text">PORTFOLIO</h2>
+				<h2 class="hollow-text hidden md:flex">PORTFOLIO</h2>
 			</div>
 		</div>
 	</main>

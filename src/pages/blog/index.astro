@@ -4,16 +4,17 @@ import Layout from '../../layouts/Layout.astro';
 import Pagination from '../../components/Pagination.astro';
 const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31';
 ---
+
 <Layout title="lockon">
 	<main>
-		<div class="w-full mx-auto">
-			<Image inferSize={true} class="w-full h-[650px] object-cover" src={img} alt="Slide 1" />
+		<div class="mx-auto">
+			<Image inferSize={true} class="object-cover" src={img} alt="Slide 1" />
 		</div>
 		<div class="max-w-6xl mx-auto p-8 flex flex-col gap-[75px]">
 			<h1 class="text-3xl font-bold text-center">日本燈燈：北海道十日遊</h1>
-			<div class="flex flex-1 gap-14">
+			<div class="sm:flex flex-1 gap-14">
 				<p class="text-justify items-center flex">北海道的夜晚总是充满了宁静与安详。这里的街道充满了复古的日式风情，每一盏街灯都诉说着时代的变迁和故事的沉淀...</p>
-				<div class="w-[800px]">
+				<div class="sm:w-[800px]">
 					<Image
 						inferSize={true}
 						src="https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31"
@@ -25,8 +26,8 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspo
 			<p class="text-justify">
 				此次旅程純粹想感受一下可出國的自由氛圍，在街頭漫步，看看人與吃吃東西。日本拉麵還是一樣鹹，生魚片與海鮮好吃，廟會料理味道太重且份量很足，鰻魚飯吃起來有些甜...此次旅程純粹想感受一下可出國的自由氛圍，在街頭漫步，看看人與吃吃東西。日本拉麵還是一樣鹹，生魚片與海鮮好吃，廟會料理味道太重且份量很足，鰻魚飯吃起來有些甜...此次旅程純粹想感受一下可出國的自由氛圍，在街頭漫步，看看人與吃吃東西。日本拉麵還是一樣鹹，生魚片與海鮮好吃，廟會料理味道太重且份量很足，鰻魚飯吃起來有些甜...此次旅程純粹想感受一下可出國的自由氛圍，在街頭漫步，看看人與吃吃東西。日本拉麵還是一樣鹹，生魚片與海鮮好吃，廟會料理味道太重且份量很足，鰻魚飯吃起來有些甜...
 			</p>
-			<div class="flex flex-1 gap-14">
-				<div class="w-[800px]">
+			<div class="sm:flex flex-1 gap-14">
+				<div class="sm:w-[800px]">
 					<Image
 						inferSize={true}
 						src="https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31"
