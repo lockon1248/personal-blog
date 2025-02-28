@@ -2,8 +2,8 @@
 const { pictureTitle } = Astro.props;
 ---
 
-<h3 id="pictureTitle">{pictureTitle}</h3>
-<div class="flex gap-[40px] flex-wrap overflow-auto scroll h-[calc(100vh-130px-64px-148px)] w-full pb-5">
+<h3 id="pictureTitle" class="flex justify-center md:justify-between">{pictureTitle}</h3>
+<div class="flex gap-[40px] flex-wrap overflow-auto scroll h-[calc(100vh-130px-64px-148px-40px)] w-full pb-5 justify-center md:justify-between">
 	<img
 		class="min-w-[200px] max-w-[200px] h-[200px] transition-transform grayscale duration-500"
 		src="https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31"

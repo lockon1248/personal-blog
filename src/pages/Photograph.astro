@@ -7,8 +7,8 @@ let pictureTitle = title[0];
 
 <Layout title="lockon">
 	<main class="sm:px-[103px]">
-		<div class="flex justify-between p-[20px] sm:p-0">
-			<div class="min-w-[161px]">
+		<div class="flex justify-between p-[20px] sm:p-0 gap-3">
+			<div class="md:min-w-[161px]">
 				{
 					title.map((item, index) => (
 						<h3 class={`cursor-pointer ${pictureTitle === item ? 'text-gold-500' : 'text-black'}`} data-index={index}>
