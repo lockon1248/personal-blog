@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Lockon 是誰？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "賴世原（Lockon）是一名前端工程師。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "這個網站是做什麼的？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "這是 Lockon 的個人前端網站，展示網頁技術功能。"
+      }
+    }
+  ]
+}

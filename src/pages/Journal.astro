@@ -7,7 +7,7 @@ let pictureTitle = title[0];
 ---
 
 <Layout title="lockon">
-	<main class="p-8 sm:px-[103px] sm:py-0 h-[calc(100vh-130px-148px-64px)] sm:h-[calc(100vh-130px-148px)]">
+	<main class="p-8 sm:px-[103px] sm:py-0">
 		<div class="flex justify-between h-full gap-8">
 			<div class="md:min-w-[161px]">
 				{
@@ -19,14 +19,14 @@ let pictureTitle = title[0];
 					))
 				}
 			</div>
-			<div class="flex gap-[40px] flex-wrap h-full overflow-auto scroll pb-5">
+			<div class="flex gap-[40px] flex-wrap overflow-auto scroll pb-5 justify-center  h-[calc(100vh-130px-148px-64px)] sm:h-[calc(100vh-130px-148px)]">
 				<BlogCard pictureTitle={pictureTitle} />
 				<BlogCard pictureTitle={pictureTitle} />
 				<BlogCard pictureTitle={pictureTitle} />
 				<BlogCard pictureTitle={pictureTitle} />
 			</div>
 			<div>
-				<h2 class="hollow-text hidden md:flex">JOURNAL</h2>
+				<h1 class="hollow-text hidden md:flex">JOURNAL</h1>
 			</div>
 		</div>
 	</main>

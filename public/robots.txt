@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://personal-blog-beige-mu.vercel.app/sitemap-index.xml
+

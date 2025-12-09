@@ -7,8 +7,8 @@ let pictureTitle = title[0];
 
 <Layout title="lockon">
 	<main class="sm:px-[103px]">
-		<div class="flex justify-between p-[20px] sm:p-0 gap-3">
-			<div class="md:min-w-[161px]">
+		<div class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-stretch p-[20px] sm:p-0 gap-6 md:gap-10">
+			<div class="md:min-w-[161px] self-start">
 				{
 					title.map((item, index) => (
 						<h3 class={`cursor-pointer ${pictureTitle === item ? 'text-gold-500' : 'text-black'}`} data-index={index}>
@@ -17,28 +17,31 @@ let pictureTitle = title[0];
 					))
 				}
 			</div>
-			<div class="flex flex-col gap-[40px] flex-wrap">
+			<div class="flex flex-col flex-1 justify-start md:max-h-[70vh] md:overflow-y-auto md:pr-2 scrollbar-hide">
 				<PhotoWall pictureTitle={pictureTitle} />
 			</div>
-			<div>
-				<h2 class="hollow-text hidden md:flex">PORTFOLIO</h2>
-			</div>
+			<h1 class="hollow-text hidden md:flex items-center justify-center self-start min-w-[100px] min-h-[70vh] pointer-events-none select-none">
+				PORTFOLIO
+			</h1>
 		</div>
 	</main>
 </Layout>
 <script>
-	document.querySelectorAll('h3[data-index]').forEach((element) => {
-		element.addEventListener('click', (event) => {
-			const target = event.target as HTMLElement;
-			const index = target.getAttribute('data-index');
-			if (index !== null) {
-				const title = ['Past day', 'China', 'future'];
-				document.getElementById('pictureTitle').innerText = title[parseInt(index)];
-				document.querySelectorAll('h3').forEach((el) => {
-					el.classList.toggle('text-gold-500', el === target);
-					el.classList.toggle('text-black', el !== target);
-				});
-			}
+	const titles = ['Past day', 'China', 'future'];
+	const pictureTitleEl = document.getElementById('pictureTitle');
+	const headings = Array.from(document.querySelectorAll<HTMLHeadingElement>('h3[data-index]'));
+	headings.forEach((item) => {
+		item.addEventListener('click', () => {
+			if (!pictureTitleEl) return;
+			const indexAttr = item.dataset.index;
+			if (indexAttr === undefined) return;
+			const index = Number.parseInt(indexAttr, 10);
+			const nextTitle = titles[index] ?? titles[0];
+			pictureTitleEl.textContent = nextTitle;
+			headings.forEach((el) => {
+				el.classList.toggle('text-gold-500', el === item);
+				el.classList.toggle('text-black', el !== item);
+			});
 		});
 	});
 </script>
@@ -52,5 +55,12 @@ let pictureTitle = title[0];
 		text-orientation: mixed; /* 文字方向 */
 		letter-spacing: 1rem; /* 字母间距 */
 		text-align: center; /* 文本居中对齐 */
+	}
+	.scrollbar-hide {
+		-ms-overflow-style: none; /* IE/Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none; /* Chrome/Safari */
 	}
 </style>
