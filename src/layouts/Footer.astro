@@ -5,13 +5,17 @@ import { Icon } from 'astro-icon/components';
 <footer class="flex flex-col gap-[30px] w-full p-7">
 	<div class="border border-black mx-auto w-full"></div>
 	<div class="flex justify-center sm:gap-28 gap-10 flex-wrap">
-		<div class="flex-1 flex justify-center">
-			<Icon class="text-3xl" name="name" />
-		</div>
-		<div class="flex gap-7 flex-1 justify-center">
-			<a href="https://www.instagram.com/lockon1248/"><Icon class="text-3xl cursor-pointer" name="instagram" /></a>
-			<a href="https://www.facebook.com/lockon.stratos.568"><Icon class="text-3xl cursor-pointer" name="facebook" /></a>
-		</div>
+    <div class="flex-1 flex justify-center">
+      <Icon class="text-3xl" name="name" aria-hidden="true" />
+    </div>
+    <div class="flex gap-7 flex-1 justify-center">
+      <a href="https://www.instagram.com/lockon1248/" aria-label="Instagram">
+        <Icon class="text-3xl cursor-pointer" name="instagram" aria-hidden="true" />
+      </a>
+      <a href="https://www.facebook.com/lockon.stratos.568" aria-label="Facebook">
+        <Icon class="text-3xl cursor-pointer" name="facebook" aria-hidden="true" />
+      </a>
+    </div>
 		<div class="font-normal text-xl flex-1 text-center cursor-pointer">
 			<a href="mailto:lockon5445@gmail.com" target="_blank" class="icon-hover-fill-blue-dark" title="email">lockon5445@gmail.com </a>
 		</div>
