@@ -2,13 +2,24 @@
 import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import Pagination from '../../components/Pagination.astro';
-const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31';
+import firstImage from '../../assets/first.webp';
+
+const heroSizes = '(min-width: 1024px) 1200px, 100vw';
+const inlineSizes = '(min-width: 1024px) 800px, 100vw';
 ---
 
 <Layout title="lockon">
 	<main>
 		<div class="mx-auto">
-			<Image inferSize={true} class="object-cover" src={img} alt="Slide 1" />
+			<Image
+				class="object-cover"
+				src={firstImage}
+				alt="Slide 1"
+				width={1400}
+				sizes={heroSizes}
+				loading="eager"
+				fetchpriority="high"
+			/>
 		</div>
 		<div class="max-w-6xl mx-auto p-8 flex flex-col gap-[75px]">
 			<h1 class="text-3xl font-bold text-center">日本燈燈：北海道十日遊</h1>
@@ -16,9 +27,10 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspo
 				<p class="text-justify items-center flex">北海道的夜晚总是充满了宁静与安详。这里的街道充满了复古的日式风情，每一盏街灯都诉说着时代的变迁和故事的沉淀...</p>
 				<div class="sm:w-[800px]">
 					<Image
-						inferSize={true}
-						src="https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31"
+						src={firstImage}
 						alt="日本街景"
+						width={1100}
+						sizes={inlineSizes}
 						class="w-full h-auto object-cover"
 					/>
 				</div>
@@ -29,9 +41,10 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspo
 			<div class="sm:flex flex-1 gap-14">
 				<div class="sm:w-[800px]">
 					<Image
-						inferSize={true}
-						src="https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31"
+						src={firstImage}
 						alt="日本街景"
+						width={1100}
+						sizes={inlineSizes}
 						class="w-full h-auto object-cover"
 					/>
 				</div>
@@ -39,9 +52,10 @@ const img = 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspo
 			</div>
 			<div>
 				<Image
-					inferSize={true}
-					src="https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31"
+					src={firstImage}
 					alt="夜晚的北海道"
+					width={1400}
+					sizes={heroSizes}
 					class="w-full h-auto object-cover"
 				/>
 			</div>

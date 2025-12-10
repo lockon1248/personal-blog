@@ -1,8 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
-const img =
-  "https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31";
+import avatarImage from "../assets/avatar.webp";
+import circleImage from "../assets/circle.webp";
+import firstImage from "../assets/first.webp";
 ---
 
 <Layout title="lockon">
@@ -11,33 +13,33 @@ const img =
       <div class="swiper w-full overflow-hidden">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img
+            <Image
               class="transition-transform grayscale duration-500 h-full w-full object-cover"
-              src={img}
+              src={firstImage}
               alt="Slide"
-              width="1600"
-              height="900"
+              width={1920}
+              sizes="(min-width: 1024px) 100vw, 100vw"
               fetchpriority="high"
               loading="eager"
             />
           </div>
           <div class="swiper-slide">
-            <img
+            <Image
               class="transition-transform grayscale duration-500 h-full w-full object-cover"
-              src={img}
+              src={firstImage}
               alt="Slide"
-              width="1600"
-              height="900"
+              width={1920}
+              sizes="(min-width: 1024px) 100vw, 100vw"
               loading="lazy"
             />
           </div>
           <div class="swiper-slide">
-            <img
+            <Image
               class="transition-transform grayscale duration-500 h-full w-full object-cover"
-              src={img}
+              src={firstImage}
               alt="Slide"
-              width="1600"
-              height="900"
+              width={1920}
+              sizes="(min-width: 1024px) 100vw, 100vw"
               loading="lazy"
             />
           </div>
@@ -79,15 +81,23 @@ const img =
             <span>YUAN</span>
           </div>
           <div class="flex relative sm:w-[420px] justify-end">
-            <img
+            <Image
               class="absolute sm:right-[140px]"
-              src="/circle.webp"
+              src={circleImage}
               alt="circle"
+              width={360}
+              sizes="(min-width: 1024px) 360px, 45vw"
+              loading="lazy"
+              decoding="async"
             />
-            <img
-              src="/avatar.webp"
+            <Image
+              src={avatarImage}
               class="w-auto h-auto object-fill"
               alt="avatar"
+              width={420}
+              sizes="(min-width: 768px) 420px, 70vw"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -120,12 +130,10 @@ const img =
   import "swiper/css";
   import "swiper/css/navigation";
   import "swiper/css/pagination";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
   const initSwiper = async () => {
-    const [{ default: Swiper }, { Navigation, Pagination, Autoplay }] = await Promise.all([
-      import("swiper"),
-      import("swiper/modules"),
-    ]);
+    const [{ default: Swiper }] = await Promise.all([import("swiper")]);
 
     const swiperConfig = {
       modules: [Navigation, Pagination, Autoplay],
@@ -162,7 +170,7 @@ const img =
     loadSwiper();
   }
 </script>
-<style>
+<style is:inline>
   .swiper {
     --swiper-pagination-color: #d9bb73 !important;
     --swiper-pagination-bullet-width: 5vw; /* 调整宽度 */

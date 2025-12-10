@@ -1,17 +1,20 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import firstImage from '../assets/first.webp';
 ---
 
 <main class="max-w-[440px] object-fill flex flex-col gap-2 sm:gap-9">
 	<!-- 图片部分 -->
 	<div class="relative w-full overflow-hidden">
-		<img
+		<Image
 			class="w-full h-auto object-cover transition-transform duration-500 grayscale hover:grayscale-0"
-			src="https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31"
+			src={firstImage}
 			alt="Slide 1"
-			width="440"
-			height="300"
-			loading="eager"
+			width={440}
+			sizes="(min-width: 768px) 440px, 90vw"
+			loading="lazy"
+			decoding="async"
 		/>
 	</div>
 	<div class="flex flex-col gap-3">
@@ -23,7 +26,8 @@ import { Icon } from 'astro-icon/components';
 	<div class="flex gap-8 items-center">
 		<div class="bg-black flex-grow h-[1px]"></div>
 		<div class="relative group cursor-pointer">
-			<a href="/blog" class="inline-block">
+			<a href="/blog" class="inline-block" aria-label="閱讀更多這篇文章">
+				<span class="sr-only">閱讀更多</span>
 				<div class="h-[2px] w-[63px] bg-gold-100 transition-all duration-500 ease-in-out group-hover:w-[70px] group-hover:ml-[-7.5px]"></div>
 				<Icon class="absolute bottom-[-1px] left-12 !w-3" name="allow" />
 				<Icon class="absolute bottom-[-1px] left-10 !w-3" name="allow" />

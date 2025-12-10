@@ -1,8 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import firstImage from '../assets/first.webp';
+
 const { pictureTitle } = Astro.props;
+const photoSizes = '(min-width: 1280px) 220px, (min-width: 768px) 200px, 45vw';
 const photos = Array.from({ length: 12 }, () => ({
-  src: 'https://firebasestorage.googleapis.com/v0/b/astro-blog-dad91.appspot.com/o/astro-blog-image%2Ffirst.jpg?alt=media&token=f9a56102-fd2c-4701-9209-2a6cfbeaff31',
-  alt: 'Slide 1',
+	src: firstImage,
+	alt: 'Slide 1',
 }));
 ---
 
@@ -10,7 +14,15 @@ const photos = Array.from({ length: 12 }, () => ({
 	<h3 id="pictureTitle" class="w-full text-center md:text-left">{pictureTitle}</h3>
 	<div class="grid [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))] gap-4 w-full pb-5">
 		{photos.map((photo) => (
-			<img class="w-full aspect-square object-cover transition duration-500 grayscale hover:grayscale-0" src={photo.src} alt={photo.alt} loading="lazy" />
+			<Image
+				class="w-full aspect-square object-cover transition duration-500 grayscale hover:grayscale-0"
+				src={photo.src}
+				alt={photo.alt}
+				width={420}
+				sizes={photoSizes}
+				loading="lazy"
+				decoding="async"
+			/>
 		))}
 	</div>
 </div>
