@@ -3,9 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import PhotoWall from '../components/PhotoWall.astro';
 const title = ['Past day', 'China', 'future'];
 let pictureTitle = title[0];
+const seo = {
+	title: '攝影作品集｜Lockon 賴世原',
+	description:
+		'瀏覽 Lockon 賴世原的攝影作品集，收錄旅拍、街景與個人影像創作。',
+	canonical: new URL('/Photograph', Astro.site).toString(),
+	ogImage: new URL('/avatar.png', Astro.site).toString(),
+};
 ---
 
-<Layout title="lockon">
+<Layout {...seo}>
 	<main class="sm:px-[103px]">
 		<div class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-stretch p-[20px] sm:p-0 gap-6 md:gap-10">
 			<div class="md:min-w-[161px] self-start">

@@ -6,15 +6,42 @@ import firstImage from '../../assets/first.webp';
 
 const heroSizes = '(min-width: 1024px) 1200px, 100vw';
 const inlineSizes = '(min-width: 1024px) 800px, 100vw';
+const seo = {
+	title: '日本燈燈：北海道十日遊｜Lockon 賴世原',
+	description:
+		'記錄北海道十日旅程中的街景、夜色與旅行觀察，收錄影像與文字故事。',
+	canonical: new URL('/blog/', Astro.site).toString(),
+	ogImage: new URL('/avatar.png', Astro.site).toString(),
+};
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: '日本燈燈：北海道十日遊',
+	description: seo.description,
+	url: seo.canonical,
+	mainEntityOfPage: seo.canonical,
+	image: [seo.ogImage],
+	author: {
+		'@type': 'Person',
+		name: '賴世原',
+		alternateName: 'Lockon',
+	},
+	publisher: {
+		'@type': 'Person',
+		name: '賴世原',
+		alternateName: 'Lockon',
+	},
+	inLanguage: 'zh-Hant',
+};
 ---
 
-<Layout title="lockon">
+<Layout {...seo} schema={schema}>
 	<main>
 		<div class="mx-auto">
 			<Image
 				class="object-cover"
 				src={firstImage}
-				alt="Slide 1"
+				alt="北海道街景主視覺照片"
 				width={1400}
 				sizes={heroSizes}
 				loading="eager"
@@ -28,7 +55,7 @@ const inlineSizes = '(min-width: 1024px) 800px, 100vw';
 				<div class="sm:w-[800px]">
 					<Image
 						src={firstImage}
-						alt="日本街景"
+						alt="北海道街頭夜景照片"
 						width={1100}
 						sizes={inlineSizes}
 						class="w-full h-auto object-cover"
@@ -42,7 +69,7 @@ const inlineSizes = '(min-width: 1024px) 800px, 100vw';
 				<div class="sm:w-[800px]">
 					<Image
 						src={firstImage}
-						alt="日本街景"
+						alt="北海道城市街景照片"
 						width={1100}
 						sizes={inlineSizes}
 						class="w-full h-auto object-cover"

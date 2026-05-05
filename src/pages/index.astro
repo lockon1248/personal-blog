@@ -5,9 +5,40 @@ import Layout from "../layouts/Layout.astro";
 import avatarImage from "../assets/avatar.webp";
 import circleImage from "../assets/circle.webp";
 import firstImage from "../assets/first.webp";
+
+const seo = {
+  title: "Lockon 賴世原｜前端工程師與攝影作品",
+  description:
+    "Lockon 賴世原的個人網站，收錄前端作品、攝影創作、旅遊紀錄與聯絡資訊。",
+  canonical: new URL("/", Astro.site).toString(),
+  ogImage: new URL("/avatar.png", Astro.site).toString(),
+};
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${seo.canonical}#website`,
+      url: seo.canonical,
+      name: "Lockon 賴世原",
+      description: seo.description,
+      inLanguage: "zh-Hant",
+    },
+    {
+      "@type": "Person",
+      "@id": `${seo.canonical}#person`,
+      name: "賴世原",
+      alternateName: "Lockon",
+      url: seo.canonical,
+      image: seo.ogImage,
+      jobTitle: "Frontend Engineer",
+      description: seo.description,
+    },
+  ],
+};
 ---
 
-<Layout title="lockon">
+<Layout {...seo} schema={schema}>
   <main class="flex flex-col">
     <div class="relative">
       <div class="swiper w-full overflow-hidden">
@@ -16,7 +47,7 @@ import firstImage from "../assets/first.webp";
             <Image
               class="transition-transform grayscale duration-500 h-full w-full object-cover"
               src={firstImage}
-              alt="Slide"
+              alt="Lockon 網站首頁主視覺，黑白風格的旅遊攝影照片"
               width={1920}
               sizes="(min-width: 1024px) 100vw, 100vw"
               fetchpriority="high"
@@ -27,7 +58,7 @@ import firstImage from "../assets/first.webp";
             <Image
               class="transition-transform grayscale duration-500 h-full w-full object-cover"
               src={firstImage}
-              alt="Slide"
+              alt="Lockon 網站首頁主視覺，黑白風格的旅遊攝影照片"
               width={1920}
               sizes="(min-width: 1024px) 100vw, 100vw"
               loading="lazy"
@@ -37,7 +68,7 @@ import firstImage from "../assets/first.webp";
             <Image
               class="transition-transform grayscale duration-500 h-full w-full object-cover"
               src={firstImage}
-              alt="Slide"
+              alt="Lockon 網站首頁主視覺，黑白風格的旅遊攝影照片"
               width={1920}
               sizes="(min-width: 1024px) 100vw, 100vw"
               loading="lazy"
@@ -84,7 +115,8 @@ import firstImage from "../assets/first.webp";
             <Image
               class="absolute sm:right-[140px]"
               src={circleImage}
-              alt="circle"
+              alt=""
+              aria-hidden="true"
               width={360}
               sizes="(min-width: 1024px) 360px, 45vw"
               loading="lazy"
@@ -93,7 +125,7 @@ import firstImage from "../assets/first.webp";
             <Image
               src={avatarImage}
               class="w-auto h-auto object-fill"
-              alt="avatar"
+              alt="Lockon 賴世原的人像照片"
               width={420}
               sizes="(min-width: 768px) 420px, 70vw"
               loading="lazy"

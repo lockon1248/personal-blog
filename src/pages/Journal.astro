@@ -3,9 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import BlogCard from '../components/BlogCard.astro';
 const title = ['Past day', 'China', 'future'];
 let pictureTitle = title[0];
+const seo = {
+	title: '旅遊日誌｜Lockon 賴世原',
+	description:
+		'閱讀 Lockon 賴世原的旅遊日誌與影像故事，記錄旅行中的城市觀察與生活片段。',
+	canonical: new URL('/Journal', Astro.site).toString(),
+	ogImage: new URL('/avatar.png', Astro.site).toString(),
+};
 ---
 
-<Layout title="lockon">
+<Layout {...seo}>
 	<main class="p-8 sm:px-[103px] sm:py-0">
 		<div class="flex justify-between h-full gap-8">
 			<div class="md:min-w-[161px]">
