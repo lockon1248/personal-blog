@@ -1,28 +1,29 @@
 ---
-import { Image } from 'astro:assets';
-import firstImage from '../assets/first.webp';
+import type { PhotoEntry } from "../data/site-content";
 
-const { pictureTitle } = Astro.props;
-const photoSizes = '(min-width: 1280px) 220px, (min-width: 768px) 200px, 45vw';
-const photos = Array.from({ length: 12 }, () => ({
-	src: firstImage,
-	alt: '旅遊攝影作品照片',
-}));
+interface Props {
+  photos: PhotoEntry[];
+}
+
+const { photos } = Astro.props;
 ---
 
-<div class="flex flex-col gap-4 w-full">
-	<h3 id="pictureTitle" class="w-full text-center md:text-left">{pictureTitle}</h3>
-	<div class="grid [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))] gap-4 w-full pb-5">
-		{photos.map((photo) => (
-			<Image
-				class="w-full aspect-square object-cover transition duration-500 grayscale hover:grayscale-0"
-				src={photo.src}
-				alt={photo.alt}
-				width={420}
-				sizes={photoSizes}
-				loading="lazy"
-				decoding="async"
-			/>
-		))}
-	</div>
+<div class="grid [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))] gap-4 w-full pb-5">
+  {
+    photos.map((photo) => (
+      <figure data-category={photo.category} class="space-y-3">
+        <img
+          class="w-full aspect-square object-cover media-monochrome"
+          src={photo.image.src}
+          alt={photo.alt}
+          width={420}
+          loading="lazy"
+        />
+        <figcaption>
+          <h2 class="font-semibold">{photo.title}</h2>
+          <p class="text-sm text-slate-700">{photo.location}</p>
+        </figcaption>
+      </figure>
+    ))
+  }
 </div>

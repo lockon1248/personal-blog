@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href?: string;
+  direction?: "next" | "prev";
+  label?: string;
+}
+
+const { href, direction = "next", label } = Astro.props;
+const isPrev = direction === "prev";
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class="relative arrow-group flex items-center gap-7 group"
+      aria-label={label}
+    >
+      {isPrev && <span>{label}</span>}
+      <div
+        class:list={[
+          "arrow-line",
+          isPrev ? "group-hover:mr-[-7.5px]" : "group-hover:ml-[-7.5px]",
+        ]}
+      ></div>
+      <Icon
+        class:list={[
+          "absolute !w-3",
+          isPrev ? "right-12 rotate-180" : "left-12",
+        ]}
+        name="allow"
+      />
+      <Icon
+        class:list={[
+          "absolute !w-3",
+          isPrev ? "right-10 rotate-180" : "left-10",
+        ]}
+        name="allow"
+      />
+      {!isPrev && <span>{label}</span>}
+    </a>
+  ) : (
+    <span class="flex items-center gap-7 opacity-40">
+      {isPrev && <span>{label}</span>}
+      <div class="arrow-line"></div>
+      {!isPrev && <span>{label}</span>}
+    </span>
+  )
+}

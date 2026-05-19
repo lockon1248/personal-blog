@@ -1,29 +1,38 @@
 ---
-import { Icon } from 'astro-icon/components';
+import ArrowLink from "./ArrowLink.astro";
+
+interface LinkItem {
+  href: string;
+  title: string;
+}
+
+interface Props {
+  prev?: LinkItem;
+  next?: LinkItem;
+  indexHref: string;
+  indexLabel: string;
+}
+
+const { prev, next, indexHref, indexLabel } = Astro.props;
 ---
-<div class="h-[150px] flex">
-	<div class="flex items-center justify-around w-full">
-		<div class="flex gap-7">
-			<div class="relative group cursor-pointer flex items-center">
-				<div class="h-[3px] w-[63px] bg-gold-100 transition-all duration-500 ease-in-out group-hover:w-[70px] group-hover:mr-[-7.5px]"></div>
-				<Icon class="absolute right-12 !w-3 rotate-180" name="allow" />
-				<Icon class="absolute right-10 !w-3 rotate-180" name="allow" />
-			</div>
-			<p>PREV</p>
-		</div>
-		<div class="flex flex-col group cursor-pointer">
-			<a href="">
-				<p>JOURNAL</p>
-			</a>
-			<div class="h-[3px] w-full bg-gold-100 transition-all duration-500 ease-in-out group-hover:w-[120%] group-hover:ml-[-10%]"></div>
-		</div>
-		<div class="flex gap-7">
-			<p>NEXT</p>
-			<div class="relative group cursor-pointer flex items-center">
-				<div class="h-[3px] w-[63px] bg-gold-100 transition-all duration-500 ease-in-out group-hover:w-[70px] group-hover:ml-[-7.5px]"></div>
-				<Icon class="absolute left-12 !w-3" name="allow" />
-				<Icon class="absolute left-10 !w-3" name="allow" />
-			</div>
-		</div>
-	</div>
-</div>
+
+<nav class="h-[150px] flex" aria-label="文章分頁">
+  <div class="flex items-center justify-around w-full gap-6 flex-wrap">
+    <ArrowLink
+      href={prev?.href}
+      direction="prev"
+      label={prev ? `PREV ${prev.title}` : "PREV"}
+    />
+    <div class="flex flex-col group cursor-pointer">
+      <a href={indexHref}>
+        <p>{indexLabel}</p>
+      </a>
+      <div class="h-[3px] w-full bg-gold-100 transition-all duration-500 ease-in-out group-hover:w-[120%] group-hover:ml-[-10%]"></div>
+    </div>
+    <ArrowLink
+      href={next?.href}
+      direction="next"
+      label={next ? `NEXT ${next.title}` : "NEXT"}
+    />
+  </div>
+</nav>

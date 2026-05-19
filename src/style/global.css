@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  box-sizing: border-box;
+  font-family:
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    system-ui,
+    sans-serif;
+  color: #111827;
+  background-color: #f1ece0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f1ece0;
+  color: #111827;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+.media-monochrome {
+  filter: grayscale(100%);
+  transition:
+    filter 0.8s ease,
+    transform 0.5s ease;
+}
+
+.media-monochrome:hover {
+  filter: grayscale(0%);
+}
+
+.section-outline-label {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 1rem;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #d9bb73;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  user-select: none;
+}
+
+.section-filter-link {
+  color: #111827;
+  transition: color 0.3s ease;
+}
+
+.section-filter-link[aria-current="page"],
+.section-filter-link[data-active="true"] {
+  color: #d9bb73;
+}
+
+.arrow-line {
+  height: 3px;
+  width: 63px;
+  background-color: #d9bb73;
+  transition:
+    width 0.5s ease-in-out,
+    margin 0.5s ease-in-out;
+}
+
+.arrow-group:hover .arrow-line {
+  width: 70px;
+}
+
+.rich-text {
+  display: grid;
+  gap: 1.5rem;
+  line-height: 1.9;
+}
+
+.rich-text h2,
+.rich-text h3 {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.rich-text p {
+  text-align: justify;
+}

@@ -1,0 +1,37 @@
+schema: spec-driven
+context: |
+  Tech stack: Astro 6, Tailwind CSS, static site generation
+  Purpose: Personal portfolio and travel photography journal
+  Conventions:
+  - Public routes use lowercase URLs
+  - Shared SEO metadata is composed through src/layouts/Layout.astro
+  - Site content is maintained centrally in src/data/site-content.ts
+  - Validation uses npm run check, npm run build, and npm run smoke
+
+rules:
+  proposal:
+    - Reference public routes and content interfaces by behavior, not only file names
+  specs:
+    - Keep capability names in kebab-case directories under openspec/specs/<capability>/spec.md
+    - Write normative requirements in English using SHALL/MUST language
+  tasks:
+    - Every task must mention the delivered behavior and its verification target
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours

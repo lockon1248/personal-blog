@@ -1,10 +1,16 @@
 ---
-import { Icon } from 'astro-icon/components';
-const isHomePage = Astro.url.pathname === '/';
+import { Icon } from "astro-icon/components";
+
+const pathname = Astro.url.pathname;
+const isHomePage = pathname === "/";
+const navItems = [
+  { href: "/photography", label: "PORTFOLIO" },
+  { href: "/journal", label: "JOURNAL" },
+];
 ---
 
-<header class={`w-full z-20 ${isHomePage ? 'sm:absolute top-50 left-50' : ''} `}>
- <div class="bg-orange-800 sm:bg-transparent h-[50px] sm:h-[130px] flex items-center">
+<header class={`w-full z-20 ${isHomePage ? "sm:absolute top-0 left-0" : ""}`}>
+  <div class="bg-orange-800 sm:bg-transparent h-[50px] sm:h-[130px] flex items-center">
     <div class="flex-1 flex justify-center items-center">
       <Icon class="text-[4vw] sm:text-3xl" name="name" aria-hidden="true" />
     </div>
@@ -13,9 +19,24 @@ const isHomePage = Astro.url.pathname === '/';
         <Icon class="text-[4vw] sm:text-3xl" name="logo" aria-hidden="true" />
       </a>
     </div>
-		<div class="flex-1 flex justify-center items-center sm:gap-12 gap-3">
-			<a class="text-black hover:text-gold-100 transition-all duration-500 ease-in-out text-[2vw] sm:text-lg" href="/Photograph">PORTFOLIO</a>
-			<a class="text-black hover:text-gold-100 transition-all duration-500 ease-in-out text-[2vw] sm:text-lg" href="/Journal">JOURNAL</a>
-		</div>
-	</div>
+    <nav class="flex-1 flex justify-center items-center sm:gap-12 gap-3">
+      {
+        navItems.map((item) => {
+          const active =
+            pathname === item.href || pathname.startsWith(`${item.href}/`);
+          return (
+            <a
+              class={`transition-all duration-500 ease-in-out text-[2vw] sm:text-lg ${
+                active ? "text-gold-100" : "text-black hover:text-gold-100"
+              }`}
+              href={item.href}
+              aria-current={active ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
 </header>

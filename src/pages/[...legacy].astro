@@ -1,0 +1,23 @@
+---
+const legacyMap: Record<string, string> = {
+  "/Journal": "/journal",
+  "/Photograph": "/photography",
+};
+
+export function getStaticPaths() {
+  return ["/Journal", "/Photograph"].map((path) => ({
+    params: {
+      legacy: path.slice(1),
+    },
+  }));
+}
+
+const pathname = `/${Astro.params.legacy ?? ""}`.replace(/\/$/, "") || "/";
+const target = legacyMap[pathname];
+
+if (target) {
+  return Astro.redirect(target);
+}
+
+return Astro.rewrite("/404");
+---

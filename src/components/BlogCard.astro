@@ -1,43 +1,39 @@
 ---
-import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components';
-import firstImage from '../assets/first.webp';
+import ArrowLink from "./ArrowLink.astro";
+import type { PostEntry } from "../data/site-content";
+
+interface Props {
+  post: PostEntry;
+}
+
+const { post } = Astro.props;
+const { slug } = post;
 ---
 
-<main class="max-w-[440px] object-fill flex flex-col gap-2 sm:gap-9">
-	<!-- 图片部分 -->
-	<div class="relative w-full overflow-hidden">
-		<Image
-			class="w-full h-auto object-cover transition-transform duration-500 grayscale hover:grayscale-0"
-			src={firstImage}
-			alt="北海道旅遊文章封面照片"
-			width={440}
-			sizes="(min-width: 768px) 440px, 90vw"
-			loading="lazy"
-			decoding="async"
-		/>
-	</div>
-	<div class="flex flex-col gap-3">
-		<h3 class="font-black text-lg">日本巡禮：北海道十日遊</h3>
-		<p class="text-sm leading-relaxed">
-			此次旅程純粹想感受一下可出國的自由氛圍，在街頭漫步，看看人與吃吃東西。日本拉麵還是一樣鹹，生魚片與海鮮好吃，廟會料理味道太重且份量很足，鰻魚飯吃起來有些甜...
-		</p>
-	</div>
-	<div class="flex gap-8 items-center">
-		<div class="bg-black flex-grow h-[1px]"></div>
-		<div class="relative group cursor-pointer">
-			<a href="/blog" class="inline-block" aria-label="閱讀更多這篇文章">
-				<span class="sr-only">閱讀更多</span>
-				<div class="h-[2px] w-[63px] bg-gold-100 transition-all duration-500 ease-in-out group-hover:w-[70px] group-hover:ml-[-7.5px]"></div>
-				<Icon class="absolute bottom-[-1px] left-12 !w-3" name="allow" />
-				<Icon class="absolute bottom-[-1px] left-10 !w-3" name="allow" />
-			</a>
-		</div>
-	</div>
-</main>
-<style>
-	img:hover {
-		transition: filter 1s ease;
-		filter: grayscale(0%);
-	}
-</style>
+<article
+  class="max-w-[440px] object-fill flex flex-col gap-2 sm:gap-9"
+  data-category={post.category}
+>
+  <a class="relative w-full overflow-hidden" href={`/journal/${slug}/`}>
+    <img
+      class="w-full h-auto object-cover transition-transform duration-500 media-monochrome hover:scale-[1.02]"
+      src={post.cover.src}
+      alt={post.coverAlt}
+      width={440}
+      loading="lazy"
+    />
+  </a>
+  <div class="flex flex-col gap-3">
+    <p class="text-sm uppercase tracking-[0.3em] text-gold-100">
+      {post.category}
+    </p>
+    <h2 class="font-black text-lg">
+      <a href={`/journal/${slug}/`}>{post.title}</a>
+    </h2>
+    <p class="text-sm leading-relaxed">{post.excerpt}</p>
+  </div>
+  <div class="flex gap-8 items-center">
+    <div class="bg-black flex-grow h-[1px]"></div>
+    <ArrowLink href={`/journal/${slug}/`} label="READ" />
+  </div>
+</article>

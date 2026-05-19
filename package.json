@@ -2,12 +2,18 @@
   "name": "persoanl-blog-astro",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "smoke": "node ./scripts/smoke.mjs",
+    "validate": "npm run check && npm run build && npm run smoke"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
@@ -16,5 +22,9 @@
     "astro-icon": "^1.1.5",
     "swiper": "^11.1.14",
     "tailwindcss": "^3.4.11"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^5.9.3"
   }
 }

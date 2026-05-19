@@ -1,64 +1,60 @@
-# Lockon Personal Blog & Portfolio (Astro)
+# Lockon Personal Blog & Portfolio
 
-Astro + Tailwind 的極簡個人網站，展示 Lockon 的攝影作品、旅遊日誌與聯絡方式，並透過結構化 FAQ Schema 與 sitemap 提升 SEO。
+Astro + Tailwind 的個人網站，展示 Lockon 的攝影作品、旅遊日誌與聯絡方式。
+目前已改為內容驅動架構，文章與作品集中管理在 `src/data/site-content.ts`，
+不需要手改列表頁模板。
 
 ## 環境需求
-- Node.js 18.20.8（建議 18 LTS 同級）
-- npm（隨 Node 18 內建）
 
-## 特色
-- Astro 5 + Tailwind 3 靜態網站，預設 `bg-custom-beige` 與 `gold-100` 品牌色。
-- 首頁全幅 Swiper 輪播，覆寫導航箭頭與分頁點樣式。
-- 專屬頁面：`/Photograph` 作品牆、`/Journal` 文章列表、`/blog` 單篇示例。
-- 內建 `astro-icon` 圖示（`src/icons`）、FAQ JSON-LD（`src/seo/FAQSchema.json`）、自訂 robots.txt 與 sitemap。
-- 共用版型：`src/layouts/Layout.astro` 內含 Header/Footer、Meta 與 FAQ Schema 注入。
+- Node.js `22.12.0` 以上
+- npm `10` 以上
 
-## 快速開始
+建議直接使用 `.nvmrc`：
+
+```bash
+nvm use
+```
+
+## 開發指令
+
 ```bash
 npm install
-npm run dev    # http://localhost:4321
+npm run dev
+npm run check
 npm run build
-npm run preview
+npm run smoke
+npm run validate
 ```
 
-## 專案結構
-```
-/
-├─ public/              # 靜態資產 (favicon、avatar、circle、robots)
-├─ src/
-│  ├─ pages/            # 頁面：index, Photograph, Journal, blog/index
-│  ├─ components/       # PhotoWall, BlogCard, Pagination
-│  ├─ layouts/          # Layout, Header, Footer
-│  ├─ icons/            # astro-icon SVG 集合
-│  ├─ seo/FAQSchema.json# FAQ 結構化資料
-│  └─ style/global.css  # 全域樣式（Tailwind 已啟用）
-├─ astro.config.ts      # site URL、Tailwind、icon、sitemap 整合（TypeScript）
-├─ tailwind.config.mjs  # 自訂色與掃描路徑
-├─ package.json         # 腳本與依賴
-└─ tsconfig.json
+## 內容結構
+
+```text
+src/data/
+└─ site-content.ts  # 文章、作品、slug、SEO 與展示資料
 ```
 
-## 技術棧
-- Astro 5
-- Tailwind CSS
-- Swiper
-- astro-icon
-- @astrojs/sitemap
+- `posts` 會自動生成 `/journal` 列表與 `/journal/[slug]` 文章頁
+- `photos` 會自動生成 `/photography` 作品牆
+- Header 導覽與 canonical 已統一改用小寫路由
 
-## 主要套件版本
-- astro: ^5.3.0
-- @astrojs/tailwind: ^6.0.0
-- tailwindcss: ^3.4.11
-- astro-icon: ^1.1.5
-- swiper: ^11.1.14
-- @astrojs/sitemap: ^3.6.0
+## 路由
 
-## 部署
-- 產出靜態檔案在 `dist/`，可部署至 Vercel、Netlify 或任意靜態託管。
-- `astro.config.ts` 的 `site` 目前指向 `https://personal-blog-beige-mu.vercel.app/`，若更換網域請同步更新以正確生成 sitemap。
+- `/` 首頁
+- `/photography` 攝影作品集
+- `/journal` 文章列表
+- `/journal/[slug]` 單篇文章
 
-## 客製化
-- 品牌色/字體：更新 `tailwind.config.mjs` 或 `src/style/global.css`。
-- Icon：將 SVG 放入 `src/icons`，於組件中 `<Icon name="...">` 使用。
-- FAQ/SEO：編輯 `src/seo/FAQSchema.json`；若需額外 meta 請修改 `src/layouts/Layout.astro`。
-- 內容：首頁、作品牆、日誌列表與單篇內容可直接改寫對應 `.astro`；圖片目前使用外部 Firebase URL，可改放 `public/`。
+舊路由 `/Photograph`、`/Journal`、`/blog` 已保留轉址，避免舊連結失效。
+
+## 品質檢查
+
+- `npm run check`：執行 Astro 型別與內容檢查
+- `npm run build`：產生靜態網站
+- `npm run smoke`：驗證主要頁面與導覽輸出
+- `npm run validate`：串起完整檢查流程
+
+## SEO 與內容維護
+
+- 共用 meta 與 JSON-LD 由 `src/layouts/Layout.astro` 注入
+- 列表頁與內容頁會自動輸出對應的 schema 與 canonical
+- 若更換正式網域，請同步更新 `astro.config.ts` 的 `site`
